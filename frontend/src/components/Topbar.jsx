@@ -39,7 +39,7 @@ export default function TopBar({ level, setLevel, adminUser, onRequestLogin, onL
     const token = localStorage.getItem('token');
     try {
       await axios.post(
-        'http://localhost:5000/api/alerts',
+           (import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/alerts',
         { level: newLevel },
         { headers: { Authorization: `Bearer ${token}` } }
       );

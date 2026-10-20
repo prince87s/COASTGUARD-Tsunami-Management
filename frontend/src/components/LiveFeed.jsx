@@ -14,7 +14,7 @@ export default function LiveFeed({ userLocation }) {
 
   // Load past alerts + listen for real-time broadcasts
   useEffect(() => {
-    axios.get('http://localhost:5000/api/alerts').then((res) => {
+    axios.get(   (import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/alerts').then((res) => {
       const initial = res.data.map((a) => ({
         id: `alert-${a._id}`,
         time: new Date(a.createdAt).toLocaleTimeString('en-GB'),

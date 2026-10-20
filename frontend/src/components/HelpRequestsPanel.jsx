@@ -7,7 +7,7 @@ export default function HelpRequestsPanel({ onClose }) {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/help-requests').then((res) => setRequests(res.data));
+    axios.get(   (import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/help-requests').then((res) => setRequests(res.data));
     socket.on('newHelpRequest', (req) => setRequests((prev) => [req, ...prev]));
     socket.on('resolvedHelpRequest', (req) => setRequests((prev) => prev.filter((r) => r._id !== req._id)));
     return () => {

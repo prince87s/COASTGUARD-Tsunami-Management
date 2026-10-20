@@ -8,7 +8,7 @@ export default function AlertHistoryPanel({ onClose }) {
   const [alerts, setAlerts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/alerts').then((res) => {
+    axios.get(   (import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/alerts').then((res) => {
       setAlerts(res.data.slice().reverse()); // oldest first for the timeline
     });
   }, []);

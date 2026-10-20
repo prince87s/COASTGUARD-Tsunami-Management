@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import L from 'leaflet';
 
-const API = 'http://localhost:5000/api/shelters';
+const API =    (import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/shelters';
 const emptyForm = { name: '', zone: '', latitude: '', longitude: '', capacity: '', occupied: '', status: 'open' };
 
 export default function AdminPanel({ shelters, onClose, onRefresh }) {

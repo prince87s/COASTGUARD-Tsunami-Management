@@ -18,7 +18,7 @@ export default function SOSButton({ userLocation }) {
     setBusy(true);
     setError('');
     try {
-      await axios.post('http://localhost:5000/api/help-requests', {
+      await axios.post(   (import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/help-requests', {
         name: name || 'Anonymous',
         message,
         latitude: userLocation.lat,
